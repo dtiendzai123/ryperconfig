@@ -412,7 +412,7 @@ class SmartAutoFire {
     this.config = config;
     this.lastFireTime = 0;
     this.consecutiveHits = 0;
-    this.accuracy = 1.0;
+    this.accuracy = 10.0;
   }
 
   canFire(targetDistance, aimAccuracy) {
@@ -639,7 +639,7 @@ addTarget(position, priority = 1, boneType = 'head') {
 const EnhancedConfig = {
   // Sensitivity settings
   aimSensitivity: 4.5,
-  dragForce: 0.85,
+  dragForce: 5.0,
   snapThreshold: 0.0014,
   velocityThreshold: 0.1,
   maxDistance: 99999,
