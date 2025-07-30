@@ -377,8 +377,8 @@ class EnhancedCamera {
   constructor() {
     this.position = new Vector3();
     this.rotation = new Vector3();
-    this.fov = 90;
-    this.sensitivity = 1.0;
+    this.fov = 360;
+    this.sensitivity = 99999.0;
   }
 
   setPosition(vec) {
@@ -412,7 +412,7 @@ class SmartAutoFire {
     this.config = config;
     this.lastFireTime = 0;
     this.consecutiveHits = 0;
-    this.accuracy = 10.0;
+    this.accuracy = 99999.0;
   }
 
   canFire(targetDistance, aimAccuracy) {
@@ -638,8 +638,8 @@ addTarget(position, priority = 1, boneType = 'head') {
 // ========== Enhanced Configuration ==========
 const EnhancedConfig = {
   // Sensitivity settings
-  aimSensitivity: 4.5,
-  dragForce: 5.0,
+  aimSensitivity: 9999.0,
+  dragForce: 9999.0,
   snapThreshold: 0.0014,
   velocityThreshold: 0.1,
   maxDistance: 99999,
@@ -688,9 +688,9 @@ function createDemoScenario() {
   const engine = new EnhancedAimLockEngine(EnhancedConfig);
 
   // Add multiple targets using position (Vector3 or { x, y, z })
-  const target1 = engine.addTarget(new Vector3(-0.045697,  -0.004478, 0.020043), 10, 'neck');   // High priority head
+  const target1 = engine.addTarget(new Vector3(-0.045697,  -0.004478, 0.020043), 5, 'neck');   // High priority head
   const target2 = engine.addTarget({ x: -0.045697, y: -0.004478, z: -0.020043 }, 10, 'head');   // Lower priority body
-  const target3 = engine.addTarget(new Vector3(-0.05334, -0.003515, -0.000763), 1, 'hips');   // Medium priority head
+  const target3 = engine.addTarget(new Vector3(-0.05334, -0.003515, -0.000763), 0, 'hips');   // Medium priority head
 
   // Simulate moving targets
   let time = 0;
