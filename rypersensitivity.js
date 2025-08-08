@@ -1,3 +1,7 @@
+let body = $response.body;
+
+// Nếu là JSON thì parse thử
+try { body = JSON.parse($response.body); } catch (e) {}
 // ========== Enhanced Vector3 Class ==========
 class Vector3 {
   constructor(x = 0, y = 0, z = 0) { 
@@ -724,3 +728,8 @@ setInterval(() => {
   const stats = enhancedEngine.getStats();
   console.log(`📊 Performance: ${JSON.stringify(stats, null, 2)}`);
 }, 5000);
+if (typeof body === "object") {
+  $done({ body: JSON.stringify(body) });
+} else {
+  $done({ body });
+}
